@@ -1,2 +1,2 @@
 # python-data-viz
-Data visualizations in Pythong
+Data visualizations in Python
