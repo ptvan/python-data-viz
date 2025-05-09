@@ -15,5 +15,11 @@ st.title('Seattle house prices')
 data = load_data(DATA_URL)
 # data_load_state.text("Done!")
 
-st.write(data)
-st.bar_chart(data, x="neighborhood", y="listed_price", color="n_bedrooms", stack=False)
+if st.checkbox('Show raw data'):
+    st.write(data)
+
+neighborhoods = data['neighborhood'].drop_duplicates()
+
+neigh_choice = st.selectbox('Neighborhood:',neighborhoods)
+
+st.bar_chart(data.loc[(data['neighborhood']==neigh_choice)], x="neighborhood", y="listed_price", color="n_bedrooms", stack=False)
